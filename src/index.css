@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .table-heading {
+    @apply p-4;
+  }
+  .table-data {
+    @apply p-4;
+  }
+  .button {
+    @apply w-2/12 p-2 font-medium bg-indigo-400 rounded-lg text-zinc-800;
+  }
+}
