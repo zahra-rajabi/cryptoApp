@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react";
 import Loader from "./Loader";
-function SearchBox({ setCurrency }) {
+import Module from "./Module";
+
+function SearchBox({
+  setCurrency,
+  currency,
+  modalData,
+  setModalData,
+  OpenModal,
+  setOpenModal,
+}) {
   let [load, setLoad] = useState(false);
   let [searchResult, setSearchResult] = useState("");
   let [searchData, setSearchData] = useState([]);
-
   /////////////////
 
   useEffect(() => {
@@ -35,7 +43,6 @@ function SearchBox({ setCurrency }) {
       data.symbol.toLowerCase().includes(searchResult.toLowerCase())
   );
 
-  console.log(searchBoxData);
   return (
     <section className="relative">
       <form className="w-full mt-16 space-x-2">
@@ -49,6 +56,7 @@ function SearchBox({ setCurrency }) {
         <select
           className="w-1/12 px-2 bg-indigo-100 border-none rounded-lg focus:border-none focus:ring-0"
           onChange={currencyHandler}
+          value={currency}
         >
           <option value="usd">USD</option>
           <option value="eur">EURO</option>
@@ -57,11 +65,11 @@ function SearchBox({ setCurrency }) {
       </form>
       {searchResult && (
         <div
-          className={`absolute w-3/12 px-4 py-2 mt-3 overflow-x-hidden bg-indigo-100 rounded-lg  max-h-52 
+          className={`absolute w-3/12 mt-3 overflow-x-hidden bg-zinc-400 rounded-lg  max-h-52 
           ${
             load || !searchBoxData.length
               ? null
-              : " scrollbar overflow-y-scroll overscroll-contain  scrollbar-w-2 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg scrollbar-track-indigo-400 scrollbar-thumb-indigo-100/50"
+              : " scrollbar overflow-y-scroll overscroll-contain  scrollbar-w-2 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg scrollbar-track-indigo-100 scrollbar-thumb-zinc-900"
           }  `}
         >
           {load ? (
@@ -70,12 +78,26 @@ function SearchBox({ setCurrency }) {
             <p className="p-2 font-semibold text-indigo-500 ">Nothing found</p>
           ) : (
             searchBoxData.map((info) => (
-              <div className="flex items-center gap-2 p-2 border-b-2 border-zinc-700/10 last:border-b-0">
+              <div
+                onClick={() => {
+                  setOpenModal(true);
+                  setModalData([
+                    info.image,
+                    info.id,
+                    info.current_price,
+                    info.market_cap,
+                    info.ath,
+                  ]);
+                }}
+                className="flex items-center gap-2 px-4 py-2 transition-all duration-150 border-b-2 cursor-pointer border-zinc-700/10 last:border-b-0 hover:bg-indigo-600 hover:text-white"
+                key={info.id}
+              >
                 <img src={info.image} alt={info.name} className="w-4 h-4" />
                 <p>{info.name}</p>
               </div>
             ))
           )}
+          {OpenModal ? <Module modalData={modalData} /> : null}
         </div>
       )}
     </section>

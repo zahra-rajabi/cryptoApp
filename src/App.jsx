@@ -9,7 +9,8 @@ function App() {
   let [pageNumber, setPageNumber] = useState(1);
   let [currency, setCurrency] = useState("usd");
   let [data, setData] = useState([]);
-
+  let [modalData, setModalData] = useState([]);
+  let [OpenModal, setOpenModal] = useState(false);
   let [isLoading, setIsLoading] = useState(false);
 
   ////////////////////////////////////
@@ -33,8 +34,22 @@ function App() {
 
       {!isLoading ? (
         <>
-          <SearchBox currency={currency} setCurrency={setCurrency} />
-          <Table data={data} currency={currency} />
+          <SearchBox
+            currency={currency}
+            setCurrency={setCurrency}
+            modalData={modalData}
+            setModalData={setModalData}
+            OpenModal={OpenModal}
+            setOpenModal={setOpenModal}
+          />
+          <Table
+            data={data}
+            currency={currency}
+            modalData={modalData}
+            setModalData={setModalData}
+            OpenModal={OpenModal}
+            setOpenModal={setOpenModal}
+          />
           <Paginations pageNumber={pageNumber} setPageNumber={setPageNumber} />
         </>
       ) : (
