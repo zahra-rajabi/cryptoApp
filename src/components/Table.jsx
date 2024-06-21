@@ -10,6 +10,7 @@ function Table({
   setModalData,
   OpenModal,
   setOpenModal,
+  night,
 }) {
   function currencyHandler() {
     if (currency === "usd") {
@@ -23,10 +24,10 @@ function Table({
 
   return (
     <>
-      <section className="mt-4 text-indigo-100">
+      <section className={`mt-4 text-indigo-100 ${!night && "text-zinc-700"}`}>
         <table className="w-full text-left rounded-lg ">
           <thead>
-            <tr className="border-b-2 ">
+            <tr className={`border-b-2 ${!night && "border-zinc-700"}`}>
               <th className="table-heading">Coin</th>
               <th className="table-heading">Name</th>
               <th className="table-heading">Price</th>
@@ -39,7 +40,9 @@ function Table({
             {data.map((coin) => (
               <tr
                 key={coin.id}
-                className="border-b-2 border-zinc-200/10 current-item"
+                className={`border-b-2 border-zinc-200/10 ${
+                  !night && "border-zinc-700/20"
+                } `}
               >
                 <td
                   className="space-x-2 cursor-pointer table-data"
@@ -61,7 +64,9 @@ function Table({
                   />
                   <span>{coin.symbol.toUpperCase()}</span>
                 </td>
-                <td className="table-data">{coin.name}</td>
+                <td className="font-semibold tracking-wide table-data first-letter:capitalize">
+                  {coin.id.replace("-", " ")}
+                </td>
                 <td className="table-data">
                   <b>{currencyHandler()}</b>
                   {coin.current_price}
@@ -74,7 +79,7 @@ function Table({
                       : { color: "#009E60	" }
                   }
                 >
-                  {coin.price_change_percentage_24h.toFixed(2)}%
+                  {Number(coin.price_change_percentage_24h).toFixed(2)}%
                 </td>
                 <td className="table-data">{coin.total_volume}</td>
                 <td className="table-data">
@@ -91,7 +96,11 @@ function Table({
         </table>
       </section>
       {OpenModal && (
-        <Module setOpenModal={setOpenModal} modalData={modalData} />
+        <Module
+          setOpenModal={setOpenModal}
+          modalData={modalData}
+          night={night}
+        />
       )}
     </>
   );

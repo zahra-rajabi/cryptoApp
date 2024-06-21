@@ -19,6 +19,6 @@
     @apply text-indigo-400;
   }
   .active {
-    @apply text-white bg-indigo-900 border-indigo-100;
+    @apply text-indigo-100 border-indigo-100;
   }
 }

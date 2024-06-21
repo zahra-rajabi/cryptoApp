@@ -4,7 +4,9 @@ import SearchBox from "./components/SearchBox";
 import Table from "./components/Table";
 import { useState, useEffect } from "react";
 import Loading from "./components/Loading";
-
+/////////////////////
+let body = document.body;
+///////////////////
 function App() {
   let [pageNumber, setPageNumber] = useState(1);
   let [currency, setCurrency] = useState("usd");
@@ -12,6 +14,11 @@ function App() {
   let [modalData, setModalData] = useState([]);
   let [OpenModal, setOpenModal] = useState(false);
   let [isLoading, setIsLoading] = useState(false);
+  let [night, setNight] = useState(true);
+  //////////////////////////////////////
+  night
+    ? (body.style.backgroundColor = "#27272a")
+    : (body.style.backgroundColor = "#e0e7ff");
 
   ////////////////////////////////////
   useEffect(() => {
@@ -30,7 +37,7 @@ function App() {
   /////////////////////
   return (
     <>
-      <Heading />
+      <Heading night={night} />
 
       {!isLoading ? (
         <>
@@ -40,6 +47,8 @@ function App() {
             modalData={modalData}
             setModalData={setModalData}
             OpenModal={OpenModal}
+            night={night}
+            setNight={setNight}
             setOpenModal={setOpenModal}
           />
           <Table
@@ -49,6 +58,7 @@ function App() {
             setModalData={setModalData}
             OpenModal={OpenModal}
             setOpenModal={setOpenModal}
+            night={night}
           />
           <Paginations pageNumber={pageNumber} setPageNumber={setPageNumber} />
         </>
