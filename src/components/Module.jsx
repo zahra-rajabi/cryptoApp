@@ -70,7 +70,7 @@ function Module({ setOpenModal, modalData, night }) {
       className="fixed inset-0 z-50 flex items-center justify-center cursor-pointer overscroll-none backdrop-blur-sm"
     >
       <section
-        className={`w-full md:w-3/5 mx-4 md:mx-0 p-2 md:p-4 overflow-y-scroll text-indigo-100 border rounded-lg shadow-md h-[75%] xl:h-4/6 xl:w-3/6 border-indigo-50/50 bg-zinc-900/70 ${
+        className={`w-full md:w-3/5 mx-4 md:mx-0 p-2 md:p-4 overflow-y-scroll text-indigo-100 border rounded-lg shadow-md h-[65%] xl:h-4/6 xl:w-3/6 border-indigo-50/50 bg-zinc-900/70 ${
           !night && "!bg-indigo-100 border-indigo-600/50"
         }`}
       >
