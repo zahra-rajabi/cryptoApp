@@ -70,7 +70,7 @@ function Module({ setOpenModal, modalData, night }) {
       className="fixed inset-0 z-50 flex items-center justify-center cursor-pointer overscroll-none backdrop-blur-sm"
     >
       <section
-        className={`w-full h-4/5  landscape:h-[80%] overflow-scroll overflow-x-hidden md:w-4/5 mx-4 md:mx-0 p-2 md:p-4 text-indigo-100 border rounded-lg shadow-md md:h-4/6  xl:w-3/6 border-indigo-50/50 bg-zinc-900/70 ${
+        className={`w-full md:w-3/5 mx-4 md:mx-0 p-2 md:p-4 overflow-y-scroll text-indigo-100 border rounded-lg shadow-md h-[75%] xl:h-4/6 xl:w-3/6 border-indigo-50/50 bg-zinc-900/70 ${
           !night && "!bg-indigo-100 border-indigo-600/50"
         }`}
       >
@@ -180,7 +180,7 @@ function Module({ setOpenModal, modalData, night }) {
           </button>
         </div>
 
-        <section className="flex items-center justify-between pb-4">
+        <section className="flex items-center justify-between">
           <div>
             <span className={`modal-info ${!night && "text-indigo-600"}`}>
               Price :
