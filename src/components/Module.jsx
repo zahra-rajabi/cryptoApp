@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IconContext } from "react-icons";
+
 import { IoCloseOutline } from "react-icons/io5";
 import { useEffect } from "react";
 import Loader from "./Loader";
@@ -35,10 +35,11 @@ function Module({ setOpenModal, modalData, night }) {
   function CustomTooltip({ active, payload }) {
     if (active && payload && payload.length) {
       return (
-        <p className={`label ${!night && "text-indigo-600"}`}>{`${Type.replace(
-          "_",
-          " "
-        )} :  $ ${payload[0].value.toFixed(4)}`}</p>
+        <p
+          className={`label ${
+            !night && "text-indigo-600"
+          } text-[9px] md:text-[12px]`}
+        >{`${Type.replace("_", " ")} :  $ ${payload[0].value.toFixed(4)}`}</p>
       );
     }
   }
@@ -69,8 +70,8 @@ function Module({ setOpenModal, modalData, night }) {
       className="fixed inset-0 z-50 flex items-center justify-center cursor-pointer overscroll-none backdrop-blur-sm"
     >
       <section
-        className={`w-3/5 p-4 text-indigo-100 border rounded-lg shadow-md h-4/5 border-indigo-50/50 bg-zinc-900/70 ${
-          !night && "!bg-indigo-100"
+        className={`w-full md:w-3/5 mx-4 md:mx-0 p-2 md:p-4 text-indigo-100 border rounded-lg shadow-md h-4/5 xl:h-4/6 xl:w-3/6 border-indigo-50/50 bg-zinc-900/70 ${
+          !night && "!bg-indigo-100 border-indigo-600/50"
         }`}
       >
         <div className="flex items-center justify-between">
@@ -103,7 +104,7 @@ function Module({ setOpenModal, modalData, night }) {
             />
           </div>
         </div>
-        <div className="w-4/5 mx-auto h-3/5">
+        <div className="mx-auto h-3/5">
           {loader ? (
             <div className="flex items-center justify-center w-full h-full">
               <Loader />
@@ -114,18 +115,12 @@ function Module({ setOpenModal, modalData, night }) {
                 data={convertData(chart, Type)}
                 width={400}
                 height={400}
-                margin={{
-                  top: 5,
-                  right: 10,
-                  left: 50,
-                  bottom: 5,
-                }}
               >
                 <CartesianGrid
                   strokeWidth="2px"
                   strokeOpacity={0.2}
                   strokeDasharray={(3, 3)}
-                  stroke={night ? "#dfdaf0" : "#27272a"}
+                  stroke={night ? "#dfdaf0" : "#4f46e5"}
                 />
                 <Line
                   type="monotone"
@@ -139,7 +134,8 @@ function Module({ setOpenModal, modalData, night }) {
                 <YAxis
                   domain={["auto", "dataMax"]}
                   strokeOpacity={0.2}
-                  stroke={night ? "#dfdaf0" : "#27272a"}
+                  className="text-[9px]"
+                  stroke={night ? "#dfdaf0" : "#4f46e5"}
                 />
                 <Legend />
               </LineChart>
@@ -147,11 +143,14 @@ function Module({ setOpenModal, modalData, night }) {
           )}
         </div>
 
-        <div className="my-4 space-x-4" onClick={clickHandler}>
+        <div
+          className="flex items-center justify-center my-4 space-x-1 md:space-x-4"
+          onClick={clickHandler}
+        >
           <button
             className={`modal-btn ${
               Type === "prices"
-                ? `active ${!night && "bg-indigo-600 text-indigo-200"}`
+                ? `active ${!night && "bg-indigo-600 !text-indigo-200"}`
                 : null
             } ${!night ? "text-zinc-700 border-zinc-700 font-semibold" : null}`}
           >
@@ -160,7 +159,7 @@ function Module({ setOpenModal, modalData, night }) {
           <button
             className={`modal-btn ${
               Type === "market_caps"
-                ? `active ${!night && "bg-indigo-600  text-indigo-200"}`
+                ? `active ${!night && "bg-indigo-600  !text-indigo-200"}`
                 : null
             }  ${
               !night ? "text-zinc-700 border-zinc-700 font-semibold" : null
@@ -171,7 +170,7 @@ function Module({ setOpenModal, modalData, night }) {
           <button
             className={`modal-btn ${
               Type === "total_volumes"
-                ? `active ${!night && "bg-indigo-600  text-indigo-200"}`
+                ? `active ${!night && "bg-indigo-600  !text-indigo-200"}`
                 : null
             }  ${
               !night ? "text-zinc-700 border-zinc-700 font-semibold" : null
@@ -181,32 +180,41 @@ function Module({ setOpenModal, modalData, night }) {
           </button>
         </div>
 
-        <section className="flex items-center justify-between my-8">
+        <section className="flex items-center justify-between">
           <div>
             <span className={`modal-info ${!night && "text-indigo-600"}`}>
               Price :
             </span>
-            <span className={`${!night && "text-zinc-700 font-semibold"}`}>
-              {" "}
-              $ {currentPrice}
+            <span
+              className={`text-[9px] xsm:text-sm ${
+                !night && "text-zinc-700 font-semibold"
+              }`}
+            >
+              &nbsp; $ {currentPrice}
             </span>
           </div>
           <div>
-            <span className={`modal-info ${!night && "text-indigo-600"}`}>
+            <span className={`modal-info  ${!night && "text-indigo-600"}`}>
               ATH :
             </span>
-            <span className={`${!night && "text-zinc-700 font-semibold"}`}>
-              {" "}
-              $ {ath}
+            <span
+              className={`text-[9px] xsm:text-sm ${
+                !night && "text-zinc-700 font-semibold"
+              }`}
+            >
+              &nbsp; $ {ath}
             </span>
           </div>
           <div>
             <span className={`modal-info ${!night && "text-indigo-600"}`}>
               Market Cap :
             </span>
-            <span className={`${!night && "text-zinc-700 font-semibold"}`}>
-              {" "}
-              $ {marketCap}
+            <span
+              className={`text-[9px] xsm:text-sm ${
+                !night && "text-zinc-700 font-semibold"
+              }`}
+            >
+              &nbsp; $ {marketCap}
             </span>
           </div>
         </section>

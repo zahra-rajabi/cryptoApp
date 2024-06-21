@@ -1,8 +1,7 @@
-import { useState } from "react";
-
 import chartDown from "../assets/chart-down.svg";
 import chartUp from "../assets/chart-up.svg";
 import Module from "./Module";
+
 function Table({
   data,
   currency,
@@ -24,8 +23,12 @@ function Table({
 
   return (
     <>
-      <section className={`mt-4 text-indigo-100 ${!night && "text-zinc-700"}`}>
-        <table className="w-full text-left rounded-lg ">
+      <section
+        className={`mt-10 md:mt-4 text-indigo-100 ${
+          !night && "text-zinc-700"
+        } overflow-x-auto`}
+      >
+        <table className="w-full text-[7px] xsm:text-[9px] text-left rounded-lg md:text-base ">
           <thead>
             <tr className={`border-b-2 ${!night && "border-zinc-700"}`}>
               <th className="table-heading">Coin</th>
@@ -33,14 +36,14 @@ function Table({
               <th className="table-heading">Price</th>
               <th className="table-heading">24H</th>
               <th className="table-heading">Total volume</th>
-              <th className="table-heading">last 7 days</th>
+              <th className="hidden table-heading md:block">last 7 days</th>
             </tr>
           </thead>
           <tbody>
             {data.map((coin) => (
               <tr
                 key={coin.id}
-                className={`border-b-2 border-zinc-200/10 ${
+                className={`border-b-2 border-zinc-200/10  ${
                   !night && "border-zinc-700/20"
                 } `}
               >
@@ -60,12 +63,12 @@ function Table({
                   <img
                     src={coin.image}
                     alt={coin.name}
-                    className="inline-block w-4 h-5 pb-1"
+                    className="inline-block w-5 h-6 pb-1 md:w-4 md:h-5"
                   />
-                  <span>{coin.symbol.toUpperCase()}</span>
+                  <span className="mx-auto">{coin.symbol.toUpperCase()}</span>
                 </td>
                 <td className="font-semibold tracking-wide table-data first-letter:capitalize">
-                  {coin.id.replace("-", " ")}
+                  {coin.name}
                 </td>
                 <td className="table-data">
                   <b>{currencyHandler()}</b>
@@ -82,7 +85,7 @@ function Table({
                   {Number(coin.price_change_percentage_24h).toFixed(2)}%
                 </td>
                 <td className="table-data">{coin.total_volume}</td>
-                <td className="table-data">
+                <td className="hidden table-data md:block">
                   <img
                     src={
                       coin.price_change_percentage_24h < 0 ? chartDown : chartUp

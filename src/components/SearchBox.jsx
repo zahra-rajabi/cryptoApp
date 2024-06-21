@@ -47,21 +47,21 @@ function SearchBox({
   );
 
   return (
-    <section className="flex items-center justify-between mt-16 ">
-      <section className="relative w-full">
-        <form className="w-full space-x-2">
+    <section className="flex flex-col-reverse mt-16 md:flex-row md:items-center md:justify-between ">
+      <section className="relative w-full md:w-1/2 ">
+        <form className="flex space-x-2 ">
           <input
             type="text"
             onChange={searchHandler}
             value={searchResult}
             placeholder="search..."
-            className={`w-3/12 px-4 py-2 bg-indigo-100 border-none rounded-lg form-input focus:border-none focus:ring-0 ${
+            className={`w-3/5 md:w-5/12 h-9 md:h-full xsm:w-2/5 px-2 md:px-4 md:py-2.5 bg-indigo-100 border-none rounded-lg form-input focus:border-none focus:ring-0 ${
               !night &&
               "bg-zinc-700 text-indigo-100 placeholder:text-indigo-100"
             }`}
           />
           <select
-            className={`w-1/12 px-2 bg-indigo-100 border-none rounded-lg focus:border-none focus:ring-0 ${
+            className={`md:w-3/12 h-9 md:h-full lg:w-2/12 xsm:w-1/6 text-sm md:text-base w-2/5 px-2 bg-indigo-100 border-none rounded-lg focus:border-none focus:ring-0 ${
               !night &&
               "bg-zinc-700 text-indigo-100 placeholder:text-indigo-100"
             }`}
@@ -75,7 +75,7 @@ function SearchBox({
         </form>
         {searchResult && (
           <div
-            className={`absolute w-3/12 mt-3 overflow-x-hidden bg-zinc-400 rounded-lg  max-h-52 
+            className={`absolute w-3/5  md:w-5/12 xsm:w-2/5 mt-3 overflow-x-hidden bg-zinc-400 rounded-lg  max-h-52 
           ${
             load || !searchBoxData.length
               ? null
@@ -87,7 +87,7 @@ function SearchBox({
             {load ? (
               <Loader />
             ) : !searchBoxData.length ? (
-              <p className="p-2 font-semibold text-indigo-500 ">
+              <p className="p-2 text-sm font-semibold text-indigo-500 md:text-base ">
                 Nothing found
               </p>
             ) : (
@@ -103,7 +103,7 @@ function SearchBox({
                       info.ath,
                     ]);
                   }}
-                  className="flex items-center gap-2 px-4 py-2 transition-all duration-150 border-b-2 cursor-pointer border-zinc-700/10 last:border-b-0 hover:bg-indigo-600 hover:text-white"
+                  className="flex items-center gap-2 px-4 py-2 text-sm transition-all duration-150 border-b-2 cursor-pointer md:text-base border-zinc-700/10 last:border-b-0 hover:bg-indigo-600 hover:text-white"
                   key={info.id}
                 >
                   <img src={info.image} alt={info.name} className="w-4 h-4" />

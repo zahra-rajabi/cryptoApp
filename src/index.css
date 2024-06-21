@@ -4,19 +4,19 @@
 
 @layer components {
   .table-heading {
-    @apply p-4;
+    @apply p-2 xsm:p-4;
   }
   .table-data {
-    @apply p-4;
+    @apply p-2 xsm:p-4;
   }
   .button {
-    @apply w-2/12 p-2 font-medium bg-indigo-400 rounded-lg text-zinc-800;
+    @apply xsm:w-2/12 w-3/12 py-2.5 px-2 font-medium bg-indigo-400 rounded-lg text-[9px] md:text-base text-zinc-800;
   }
   .modal-btn {
-    @apply w-1/5 px-4 py-2 text-sm text-indigo-400 border border-indigo-400 rounded-lg;
+    @apply w-[35%] md:w-[26%] px-2 md:px-4 py-2 text-[9px] xmd:text-xs text-indigo-400 border border-indigo-400 rounded-lg lg:w-1/5;
   }
   .modal-info {
-    @apply text-indigo-400;
+    @apply text-indigo-400 text-[10px] xsm:text-sm;
   }
   .active {
     @apply text-indigo-100 border-indigo-100;

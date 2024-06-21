@@ -5,7 +5,7 @@ let number = [
 
 function Pagination({ pageNumber, setPageNumber }) {
   return (
-    <div className="flex items-center justify-center my-12">
+    <div className="flex items-center justify-center w-full my-12">
       <button
         className={`button ${pageNumber === 1 ? "opacity-50" : ""} mr-2`}
         onClick={pageNumber !== 1 ? () => setPageNumber(pageNumber - 1) : null}
@@ -13,7 +13,10 @@ function Pagination({ pageNumber, setPageNumber }) {
         Previous
       </button>
       {number.map((page, index) => (
-        <div className="flex items-center justify-center" key={index}>
+        <div
+          className="flex justify-center items-center text-[9px] md:text-base"
+          key={index}
+        >
           {page === 29 ? (
             <span className="mr-2 text-indigo-400 ">...</span>
           ) : (
@@ -21,7 +24,7 @@ function Pagination({ pageNumber, setPageNumber }) {
           )}
 
           <button
-            className={`w-10 p-2 mx-2 text-indigo-400 border-2 border-indigo-400 rounded-lg ${
+            className={`w-8 md:w-10 p-2 mx-2 text-indigo-400 border-2 border-indigo-400 rounded-lg ${
               page === pageNumber
                 ? "bg-indigo-400 text-zinc-800 font-medium"
                 : "bg-none"
@@ -56,7 +59,7 @@ function Pagination({ pageNumber, setPageNumber }) {
         </div>
       ))}
       <button
-        className={`button ${pageNumber === 30 ? "opacity-50" : ""}`}
+        className={` button ${pageNumber === 30 ? "opacity-50" : ""}`}
         onClick={
           pageNumber !== 30
             ? () => {
