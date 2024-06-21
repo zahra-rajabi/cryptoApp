@@ -70,7 +70,7 @@ function Module({ setOpenModal, modalData, night }) {
       className="fixed inset-0 z-50 flex items-center justify-center cursor-pointer overscroll-none backdrop-blur-sm"
     >
       <section
-        className={`w-4/6 mx-4 md:mx-0 p-2 md:p-4 overflow-y-scroll scrollbar scrollbar-w-1 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg scrollbar-track-indigo-100 scrollbar-thumb-zinc-900 text-indigo-100 border rounded-lg shadow-md h-[65%] xl:h-4/6 border-indigo-50/50 bg-zinc-900/70 ${
+        className={`w-4/5 md:w-4/6 mx-4 md:mx-0 p-2 md:p-4 overflow-y-scroll scrollbar scrollbar-w-1 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg scrollbar-track-indigo-100 scrollbar-thumb-zinc-900 text-indigo-100 border rounded-lg shadow-md h-[65%] xl:h-4/6 border-indigo-50/50 bg-zinc-900/70 ${
           !night && "!bg-indigo-100 border-indigo-600/50"
         }`}
       >
@@ -152,7 +152,7 @@ function Module({ setOpenModal, modalData, night }) {
               Type === "prices"
                 ? `active ${!night && "bg-indigo-600 !text-indigo-200"}`
                 : null
-            } ${!night ? "text-zinc-700 border-zinc-700 font-semibold" : null}`}
+            } ${!night ? "text-zinc-700 border-zinc-700" : null}`}
           >
             Prices
           </button>
@@ -161,20 +161,16 @@ function Module({ setOpenModal, modalData, night }) {
               Type === "market_caps"
                 ? `active ${!night && "bg-indigo-600  !text-indigo-200"}`
                 : null
-            }  ${
-              !night ? "text-zinc-700 border-zinc-700 font-semibold" : null
-            }`}
+            }  ${!night ? "text-zinc-700 border-zinc-700" : null}`}
           >
             Market Caps
           </button>
           <button
             className={`modal-btn ${
-              Type === "total_volumes"
+              Type === "total_volumes "
                 ? `active ${!night && "bg-indigo-600  !text-indigo-200"}`
                 : null
-            }  ${
-              !night ? "text-zinc-700 border-zinc-700 font-semibold" : null
-            }`}
+            }  ${!night ? "text-zinc-700 border-zinc-700 " : null}`}
           >
             Total Volumes
           </button>
@@ -186,8 +182,8 @@ function Module({ setOpenModal, modalData, night }) {
               Price :
             </span>
             <span
-              className={`text-[9px] xsm:text-sm ${
-                !night && "text-zinc-700 font-semibold"
+              className={`text-[9px] xsm:text-sm font-semibold ${
+                !night && "text-zinc-700 "
               }`}
             >
               &nbsp; $ {currentPrice}
@@ -198,8 +194,8 @@ function Module({ setOpenModal, modalData, night }) {
               ATH :
             </span>
             <span
-              className={`text-[9px] xsm:text-sm ${
-                !night && "text-zinc-700 font-semibold"
+              className={`text-[9px] xsm:text-sm font-semibold ${
+                !night && "text-zinc-700 "
               }`}
             >
               &nbsp; $ {ath}
@@ -210,8 +206,8 @@ function Module({ setOpenModal, modalData, night }) {
               Market Cap :
             </span>
             <span
-              className={`text-[9px] xsm:text-sm ${
-                !night && "text-zinc-700 font-semibold"
+              className={`text-[9px] xsm:text-sm font-semibold ${
+                !night && "text-zinc-700 "
               }`}
             >
               &nbsp; $ {marketCap}
