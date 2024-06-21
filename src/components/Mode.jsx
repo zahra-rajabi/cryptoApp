@@ -3,7 +3,7 @@ import { IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
 function Mode({ night, setNight }) {
   return (
     <div
-      className={`relative w-1/5 xsm:w-2/12 md:w-[6%] overflow-hidden bg-indigo-600 rounded-full cursor-pointer h-7 self-end md:self-center mb-4 md:mb-0 ${
+      className={`relative w-1/5 xsm:w-2/12 md:w-[8%] overflow-hidden bg-indigo-600 rounded-full cursor-pointer h-7 self-end md:self-center mb-4 md:mb-0 ${
         !night && "bg-zinc-700"
       }`}
       onClick={() => setNight(!night)}
