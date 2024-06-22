@@ -72,7 +72,7 @@ function Table({
                 </td>
                 <td className="table-data">
                   <b>{currencyHandler()}</b>
-                  {coin.current_price}
+                  {coin.current_price.toLocaleString()}
                 </td>
                 <td
                   className="table-data"
@@ -84,7 +84,9 @@ function Table({
                 >
                   {Number(coin.price_change_percentage_24h).toFixed(2)}%
                 </td>
-                <td className="table-data">{coin.total_volume}</td>
+                <td className="table-data">
+                  {coin.total_volume.toLocaleString()}
+                </td>
                 <td className="hidden table-data md:block">
                   <img
                     src={
