@@ -167,8 +167,8 @@ function Module({ setOpenModal, modalData, night }) {
           </button>
           <button
             className={`modal-btn ${
-              Type === "total_volumes "
-                ? `active ${!night && "bg-indigo-600  !text-indigo-200"}`
+              Type === "total_volumes"
+                ? ` active ${!night && "bg-indigo-600  !text-indigo-200"}`
                 : null
             }  ${!night ? "text-zinc-700 border-zinc-700 " : null}`}
           >
